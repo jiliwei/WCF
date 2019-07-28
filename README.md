@@ -7,7 +7,7 @@ IO信号和轴的监控及操作自动生成，可以全部显示，也可以只
 工作参数数据在参数编辑控件一键添加，不用添加代码，就可以直接用；
 
 流程编写便携，输入信号获取，输出信号设置，轴运动等都可以一行代码完成。如图：
-![Image text](https://raw.githubusercontent.com/jiliwei/WCF/ialy1992/img/ProcessCode.png)
+![Image text](https://raw.githubusercontent.com/jiliwei/WCF/master/img/ProcessCode.png)
 
 具体可以下载Debug文件夹运行exe鉴赏，注：源码需要用VS2017打开。
 
