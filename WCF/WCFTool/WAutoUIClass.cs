@@ -3,6 +3,7 @@ using System.Windows.Forms;
 
 namespace WCF
 {
+    /// 来自网络，UI自适应（当前取消了DataGridView内容自适应）
     class WAutoUIClass
     {
         //(1).声明结构,只记录窗体和其控件的初始位置和大小。

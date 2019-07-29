@@ -7,6 +7,12 @@ using System.Threading;
 
 namespace WCF
 {
+    /// 类 	  名：WorkThreads
+	/// 类 描 述：工作流程类
+	/// 创 建 者：韦季李
+	/// 创建时间：2019/7/26
+	/// 源码网证：https://github.com/jiliwei/WCF
+	/// 版权许可：GNU通用公共许可第3版
     class WorkThreads
     {
         bool isFeeding = true;//true表示送料完成，false为正在送料
