@@ -37,13 +37,14 @@
             this.llbWCF = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 170);
+            this.groupBox1.Location = new System.Drawing.Point(12, 140);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(478, 193);
             this.groupBox1.TabIndex = 0;
@@ -65,7 +66,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("仿宋", 42F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(200, 21);
+            this.label1.Location = new System.Drawing.Point(200, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 56);
             this.label1.TabIndex = 1;
@@ -74,7 +75,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 131);
+            this.label2.Location = new System.Drawing.Point(173, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(149, 12);
             this.label2.TabIndex = 2;
@@ -82,9 +83,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(415, 365);
+            this.btnClose.Location = new System.Drawing.Point(415, 345);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(75, 43);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "关闭";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -93,7 +94,7 @@
             // llbWCF
             // 
             this.llbWCF.AutoSize = true;
-            this.llbWCF.Location = new System.Drawing.Point(155, 151);
+            this.llbWCF.Location = new System.Drawing.Point(155, 122);
             this.llbWCF.Name = "llbWCF";
             this.llbWCF.Size = new System.Drawing.Size(185, 12);
             this.llbWCF.TabIndex = 4;
@@ -105,7 +106,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("仿宋", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(151, 101);
+            this.label3.Location = new System.Drawing.Point(151, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(198, 20);
             this.label3.TabIndex = 5;
@@ -121,11 +122,21 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "联系方式(微信QQ同号)：769838889";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(16, 345);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(269, 12);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "作者：韦季李  你的名字（如果您愿意一起完善）";
+            // 
             // WCFAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 393);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.llbWCF);
@@ -152,5 +163,6 @@
         private System.Windows.Forms.LinkLabel llbWCF;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }

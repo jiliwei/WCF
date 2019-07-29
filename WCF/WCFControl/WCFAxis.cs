@@ -5,6 +5,12 @@ using System.Windows.Forms;
 
 namespace WCF.WCFControl
 {
+    /// 类 	  名：WCFAxis
+	/// 类 描 述：轴操作自定义控件
+	/// 创 建 者：韦季李
+	/// 创建时间：2019/7/26
+	/// 源码网证：https://github.com/jiliwei/WCF
+	/// 版权许可：GNU通用公共许可第3版
     public partial class WCFAxis : UserControl
     {
         public WCFAxis()
