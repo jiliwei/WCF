@@ -31,16 +31,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.wcfDataType = new WCF.WCFDataType();
             this.wcfDataGroup = new WCF.WCFControl.WCFDataGroup();
             this.wcfDataPata = new WCF.WCFData();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lvWcfAxis = new WCF.WCFControl.WCFAxis();
             this.lvWcfDO = new WCF.WCFControl.WCFDO();
             this.lvWcfDI = new WCF.Resources.WCFDI();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.wcfCardEdit = new WCF.WCFCard();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -84,6 +84,39 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.lvWcfAxis);
+            this.tabPage3.Controls.Add(this.lvWcfDO);
+            this.tabPage3.Controls.Add(this.lvWcfDI);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1412, 868);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "监控";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.wcfCardEdit);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1412, 868);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "卡数据管理";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WCF.Properties.Resources.Synopsis;
+            this.pictureBox1.Location = new System.Drawing.Point(567, 35);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(849, 629);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
             // wcfDataType
             // 
             this.wcfDataType.Location = new System.Drawing.Point(6, 460);
@@ -106,18 +139,6 @@
             this.wcfDataPata.Size = new System.Drawing.Size(567, 448);
             this.wcfDataPata.TabIndex = 0;
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.lvWcfAxis);
-            this.tabPage3.Controls.Add(this.lvWcfDO);
-            this.tabPage3.Controls.Add(this.lvWcfDI);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1412, 868);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "监控";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // lvWcfAxis
             // 
             this.lvWcfAxis.Location = new System.Drawing.Point(3, 351);
@@ -139,33 +160,12 @@
             this.lvWcfDI.Size = new System.Drawing.Size(400, 330);
             this.lvWcfDI.TabIndex = 4;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.wcfCardEdit);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1412, 868);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "卡数据管理";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // wcfCardEdit
             // 
             this.wcfCardEdit.Location = new System.Drawing.Point(3, 6);
             this.wcfCardEdit.Name = "wcfCardEdit";
             this.wcfCardEdit.Size = new System.Drawing.Size(1410, 777);
             this.wcfCardEdit.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WCF.Properties.Resources.Synopsis;
-            this.pictureBox1.Location = new System.Drawing.Point(567, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(849, 629);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
