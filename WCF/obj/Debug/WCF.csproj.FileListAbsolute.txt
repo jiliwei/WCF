@@ -20,7 +20,6 @@ D:\WCF\WCF\WCF\obj\Debug\WCF.pdb
 D:\WCFGit\WCF\WCF\bin\Debug\WCF.exe.config
 D:\WCFGit\WCF\WCF\bin\Debug\WCF.exe
 D:\WCFGit\WCF\WCF\bin\Debug\WCF.pdb
-D:\WCFGit\WCF\WCF\obj\Debug\WCF.csprojAssemblyReference.cache
 D:\WCFGit\WCF\WCF\obj\Debug\WCF.Form1.resources
 D:\WCFGit\WCF\WCF\obj\Debug\WCF.Properties.Resources.resources
 D:\WCFGit\WCF\WCF\obj\Debug\WCF.WCFAbout.resources

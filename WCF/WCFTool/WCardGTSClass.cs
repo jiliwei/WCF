@@ -11,7 +11,6 @@ namespace WCF
 	/// 创 建 者：韦季李
 	/// 创建时间：2019/7/26
 	/// 源码网证：https://github.com/jiliwei/WCF
-	/// 版权许可：GNU通用公共许可第3版
     class WCardGTSClass : WCardClass
     {
         public override int getDIState(int CardNum, int IoID, int IoType, int IoState, int ExtendNum)
