@@ -11,15 +11,17 @@ using System.Windows.Forms;
 namespace WCF
 {
     /// 类 	  名：WCFAbout
-	/// 类 描 述：关于窗口
+	/// 类 描 述：关于
 	/// 创 建 者：韦季李
 	/// 创建时间：2019/7/26
-	/// 源码网证：https://github.com/jiliwei/WCF
+	/// 源    码：https://github.com/jiliwei/WCF
     public partial class WCFAbout : Form
     {
         public WCFAbout()
         {
             InitializeComponent();
+
+            lbl_Version.Text = "版本： "+ Application.ProductVersion.ToString() + "（鉴赏版）";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -29,7 +31,7 @@ namespace WCF
 
         private void llbWCF_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            llbWCF.Links[0].LinkData = "https://github.com/jiliwei/WCF";
+            llb_WCF.Links[0].LinkData = "https://github.com/jiliwei/WCF";
             System.Diagnostics.Process.Start(e.Link.LinkData.ToString());
         }
     }

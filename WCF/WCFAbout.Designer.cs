@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WCFAbout));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_Version = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.llbWCF = new System.Windows.Forms.LinkLabel();
+            this.llb_WCF = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,14 +60,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "WCF";
             // 
-            // label2
+            // lbl_Version
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 102);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "版本： 0.0.0.1（鉴赏版）";
+            this.lbl_Version.AutoSize = true;
+            this.lbl_Version.Location = new System.Drawing.Point(173, 102);
+            this.lbl_Version.Name = "lbl_Version";
+            this.lbl_Version.Size = new System.Drawing.Size(149, 12);
+            this.lbl_Version.TabIndex = 2;
+            this.lbl_Version.Text = "版本： 0.0.0.2（鉴赏版）";
             // 
             // btnClose
             // 
@@ -79,16 +79,16 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // llbWCF
+            // llb_WCF
             // 
-            this.llbWCF.AutoSize = true;
-            this.llbWCF.Location = new System.Drawing.Point(155, 122);
-            this.llbWCF.Name = "llbWCF";
-            this.llbWCF.Size = new System.Drawing.Size(185, 12);
-            this.llbWCF.TabIndex = 4;
-            this.llbWCF.TabStop = true;
-            this.llbWCF.Text = "https://github.com/jiliwei/WCF";
-            this.llbWCF.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbWCF_LinkClicked);
+            this.llb_WCF.AutoSize = true;
+            this.llb_WCF.Location = new System.Drawing.Point(155, 122);
+            this.llb_WCF.Name = "llb_WCF";
+            this.llb_WCF.Size = new System.Drawing.Size(185, 12);
+            this.llb_WCF.TabIndex = 4;
+            this.llb_WCF.TabStop = true;
+            this.llb_WCF.Text = "https://github.com/jiliwei/WCF";
+            this.llb_WCF.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbWCF_LinkClicked);
             // 
             // label3
             // 
@@ -128,9 +128,9 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.llbWCF);
+            this.Controls.Add(this.llb_WCF);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbl_Version);
             this.Controls.Add(this.label1);
             this.Name = "WCFAbout";
             this.Text = "关于 WCF";
@@ -142,9 +142,9 @@
         #endregion
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_Version;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.LinkLabel llbWCF;
+        private System.Windows.Forms.LinkLabel llb_WCF;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

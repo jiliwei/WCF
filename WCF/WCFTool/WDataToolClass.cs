@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Windows.Forms;
 using System.IO;
+using System.Collections.Concurrent;
 
 namespace WCF
 {
@@ -10,12 +11,20 @@ namespace WCF
 	/// 类 描 述：SQLite数据库工具类
 	/// 创 建 者：韦季李
 	/// 创建时间：2019/7/26
-	/// 源码网证：https://github.com/jiliwei/WCF
+	/// 源    码：https://github.com/jiliwei/WCF
     public class WDataToolClass
     {
-        public SQLiteConnection conn;
-        public string dbDataPath = Application.StartupPath + "\\WcfData.db";
-        public string mParameter = "";//当前用的参数表的表名
+        private SQLiteConnection conn;
+        private string dbDataPath = Application.StartupPath + "\\WcfData.db";
+        public static ConcurrentDictionary<string, string> dicAxis = new ConcurrentDictionary<string, string>();//轴数据字典
+        public static ConcurrentDictionary<string, string> dicDI = new ConcurrentDictionary<string, string>();//DI数据字典
+        public static ConcurrentDictionary<string, string> dicDO = new ConcurrentDictionary<string, string>();//DO数据字典
+        public static ConcurrentDictionary<string, string> dicPara = new ConcurrentDictionary<string, string>();//参数数据字典
+
+        /// <summary>
+        /// 当前用的参数表的表名
+        /// </summary>
+        private string mParameter = "";
         /// <summary>
         /// 校验数据库文件是否存在
         /// </summary>
@@ -39,7 +48,7 @@ namespace WCF
                     String sql = "";
                     SQLiteCommand cmd;
                     //创建机种表并增加默认数据
-                    sql = "CREATE TABLE WcfModel ( Id INTEGER PRIMARY KEY, Name VARCHAR UNIQUE, Current INTEGER NOT NULL )";
+                    sql = "CREATE TABLE WcfModel ( ID INTEGER PRIMARY KEY, Name VARCHAR UNIQUE, Current INTEGER NOT NULL )";
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                     cmd.Clone();
@@ -68,7 +77,7 @@ namespace WCF
 
                     //创建输入表
                     sql = "CREATE TABLE WcfDI (" +
-                            "Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                            "ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                             "GroupName VARCHAR NOT NULL," +
                             "Name VARCHAR NOT NULL," +
                             "CardNum   INTEGER NOT NULL," +
@@ -82,7 +91,7 @@ namespace WCF
 
                     //创建输出表
                     sql = "CREATE TABLE WcfDO (" +
-                            "Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                            "ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
                             "GroupName VARCHAR NOT NULL," +
                             "Name VARCHAR NOT NULL," +
                             "CardNum   INTEGER NOT NULL," +
@@ -96,7 +105,7 @@ namespace WCF
 
                     //创建参数参照表
                     sql = "CREATE TABLE WcfParameter (" +
-                            "Id INTEGER PRIMARY KEY," +
+                            "ID INTEGER PRIMARY KEY," +
                             "GroupName VARCHAR NOT NULL," +
                             "Name VARCHAR UNIQUE," +
                             "Value DOUBLE DEFAULT(0)," +
@@ -105,16 +114,29 @@ namespace WCF
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                     cmd.Clone();
+                    //创建矩阵参照表（一个位置只有一个吸嘴去贴，故只有一个补偿坐标）
+                    sql = "CREATE TABLE WcfParameterMatrix (" +
+                          "ID    INTEGER PRIMARY KEY," +
+                          "NUM   INTEGER NOT NULL," +
+                          "State INTEGER NOT NULL," +
+                          "X     DOUBLE NOT NULL," +
+                          "Y     DOUBLE  NOT NULL," +
+                          "OffsetX DOUBLE DEFAULT(0)," +
+                          "OffsetY DOUBLE  DEFAULT(0))," +
+                          "OffsetR DOUBLE  DEFAULT(0))";
+                    cmd = new SQLiteCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                    cmd.Clone();
 
                     //查询当前机种，创建当前机种的参数表（表名=WcfParameter+当前机种对应的表ID）
-                    sql = "SELECT Id FROM WcfModel WHERE Current=1";
+                    sql = "SELECT ID FROM WcfModel WHERE Current=1";
                     cmd = new SQLiteCommand(sql, conn);
                     SQLiteDataReader sdr = cmd.ExecuteReader();
                     cmd.Clone();
                     while (sdr.Read())
                     {
                         mParameter = "WcfParameter" + sdr["Id"].ToString();
-                        sql = "create table "+ mParameter + " as select * from WcfParameter";
+                        sql = "create table " + mParameter + " as select * from WcfParameter";
                     }
                     sdr.Close();
                     cmd = new SQLiteCommand(sql, conn);
@@ -229,6 +251,13 @@ namespace WCF
                 DataTable dt = new DataTable();
                 mAdapter.Fill(dt);
                 dgvShow.DataSource = dt;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dicAxis.ContainsKey(dr[1].ToString()))
+                        dicAxis[dr[1].ToString()] = dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString();
+                    else
+                        dicAxis.TryAdd(dr[1].ToString(), dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString());
+                }
             }
             catch (Exception ex)
             {
@@ -307,7 +336,7 @@ namespace WCF
         /// <param name="Speed">速度</param>
         /// <param name="ResetNum">复位顺序</param>
         /// <returns></returns>
-        public int InsertAxis(String GroupName, String Name, Int32 CardNum,Int32 AxisNum, Int32 Pulse, Int32 Acc, Int32 Speed, Int32 ResetNum)
+        public int InsertAxis(String GroupName, String Name, Int32 CardNum, Int32 AxisNum, Int32 Pulse, Int32 Acc, Int32 Speed, Int32 ResetNum)
         {
             try
             {
@@ -348,7 +377,7 @@ namespace WCF
         {
             try
             {
-                string sql = "UPDATE WcfAxis SET "+
+                string sql = "UPDATE WcfAxis SET " +
                     "GroupName=@GroupName,Name=@Name,CardNum=@CardNum,AxisNum=@AxisNum,Pulse=@Pulse,Acc=@Acc,Speed=@Speed,ResetNum=@ResetNum  " +
                     "WHERE Name=@oldName";
                 SQLiteCommand cmd = new SQLiteCommand(sql, conn);
@@ -398,7 +427,7 @@ namespace WCF
         /// DI数据的查询
         /// </summary>
         /// <returns></returns>
-        public int getDataDI(string Name,out int CardNum, out int IoID, out int IoType, out int IoState, out int ExtendNum)
+        public int getDataDI(string Name, out int CardNum, out int IoID, out int IoType, out int IoState, out int ExtendNum)
         {
             CardNum = 0;
             IoID = 0;
@@ -407,19 +436,12 @@ namespace WCF
             ExtendNum = 0;
             try
             {
-                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select CardNum,IoID,IoType,IoState,ExtendNum from WcfDI WHERE Name='"+ Name+"'", conn);
-                DataTable dt = new DataTable();
-                mAdapter.Fill(dt);
-                if(dt.Rows.Count == 1)
-                {
-                    CardNum = int.Parse(dt.Rows[0][0].ToString());
-                    IoID = int.Parse(dt.Rows[0][0].ToString());
-                    IoType = int.Parse(dt.Rows[0][0].ToString());
-                    IoState = int.Parse(dt.Rows[0][0].ToString());
-                    ExtendNum = int.Parse(dt.Rows[0][0].ToString());
-                }
-                else
-                    return -1;
+                string[] mValue = dicDI[Name].Split(';');
+                CardNum = int.Parse(mValue[0]);
+                IoID = int.Parse(mValue[1]);
+                IoType = int.Parse(mValue[2]);
+                IoState = int.Parse(mValue[3]);
+                ExtendNum = int.Parse(mValue[4]);
             }
             catch (Exception ex)
             {
@@ -436,11 +458,18 @@ namespace WCF
         {
             try
             {
-                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select GroupName as 组名,Name as 名称,CardNum as 卡号,IoID as 端口号,"+
+                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select GroupName as 组名,Name as 名称,CardNum as 卡号,IoID as 端口号," +
                                             "cast(IoType as VARCHAR) as 类型,cast(IoState as VARCHAR) as 状态,ExtendNum as 扩展卡号 from WcfDI ORDER BY GroupName", conn);
                 DataTable dt = new DataTable();
                 mAdapter.Fill(dt);
                 dgvShow.DataSource = dt;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dicDI.ContainsKey(dr[1].ToString()))
+                        dicDI[dr[1].ToString()] = dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString();
+                    else
+                        dicDI.TryAdd(dr[1].ToString(), dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString());
+                }
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     dgvShow.Rows[i].Cells[4].Value = WUseToolClass.getIoTypeName(int.Parse(dgvShow.Rows[i].Cells[4].Value.ToString()));
@@ -459,23 +488,23 @@ namespace WCF
         /// </summary>
         /// <param name="dt">返回的数据</param>
         /// <returns></returns>
-        public int SelectShowDI(out DataTable dt,string GroupName = "")
+        public int SelectShowDI(out DataTable dt, string GroupName = "")
         {
             dt = new DataTable();
             try
             {
                 if (GroupName.Length > 0)
                 {
-                    GroupName = " WHERE GroupName = '"+ GroupName+"' ";
+                    GroupName = " WHERE GroupName = '" + GroupName + "' ";
                 }
-                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select GroupName,Name,CardNum,IoID,IoType,IoState,ExtendNum from WcfDI "+ GroupName + " ORDER BY GroupName", conn);
+                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select GroupName,Name,CardNum,IoID,IoType,IoState,ExtendNum from WcfDI " + GroupName + " ORDER BY GroupName", conn);
                 mAdapter.Fill(dt);
                 if (dt.Rows.Count == 0)
                 {
                     if (GroupName.Length == 0)
                         MessageBox.Show("输入数据为空");
                     else
-                        MessageBox.Show(GroupName+"组的输入数据为空");
+                        MessageBox.Show(GroupName + "组的输入数据为空");
                     return 1;
                 }
 
@@ -620,19 +649,12 @@ namespace WCF
             ExtendNum = 0;
             try
             {
-                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select CardNum,IoID,IoType,IoState,ExtendNum from WcfDO WHERE Name='" + Name + "'", conn);
-                DataTable dt = new DataTable();
-                mAdapter.Fill(dt);
-                if (dt.Rows.Count == 1)
-                {
-                    CardNum = int.Parse(dt.Rows[0][0].ToString());
-                    IoID = int.Parse(dt.Rows[0][0].ToString());
-                    IoType = int.Parse(dt.Rows[0][0].ToString());
-                    IoState = int.Parse(dt.Rows[0][0].ToString());
-                    ExtendNum = int.Parse(dt.Rows[0][0].ToString());
-                }
-                else
-                    return -1;
+                string[] mValue = dicDO[Name].Split(';');
+                CardNum = int.Parse(mValue[0]);
+                IoID = int.Parse(mValue[1]);
+                IoType = int.Parse(mValue[2]);
+                IoState = int.Parse(mValue[3]);
+                ExtendNum = int.Parse(mValue[4]);
             }
             catch (Exception ex)
             {
@@ -654,6 +676,13 @@ namespace WCF
                 DataTable dt = new DataTable();
                 mAdapter.Fill(dt);
                 dgvShow.DataSource = dt;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dicDO.ContainsKey(dr[1].ToString()))
+                        dicDO[dr[1].ToString()] = dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString();
+                    else
+                        dicDO.TryAdd(dr[1].ToString(), dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString());
+                }
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     dgvShow.Rows[i].Cells[4].Value = WUseToolClass.getIoTypeName(int.Parse(dgvShow.Rows[i].Cells[4].Value.ToString()));
@@ -934,14 +963,14 @@ namespace WCF
                 cmd.ExecuteNonQuery();
                 cmd.Clone();
                 //读取新机种对应的Id
-                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select Id from WcfModel WHERE Name='"+ Name+"'", conn);
+                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter("select ID from WcfModel WHERE Name='" + Name + "'", conn);
                 DataTable dt = new DataTable();
                 mAdapter.Fill(dt);
                 if (dt.Rows.Count == 1)
                 {
                     nowParameter = "WcfParameter" + dt.Rows[0]["Id"].ToString();
                     //创建和当前参数表一样结构一样数据的参数表
-                    sql = "create table "+ nowParameter + " as select * from "+ mParameter;
+                    sql = "create table " + nowParameter + " as select * from " + mParameter;
                     cmd = new SQLiteCommand(sql, conn);
                     cmd.ExecuteNonQuery();
                     cmd.Clone();
@@ -1039,7 +1068,6 @@ namespace WCF
                         MessageBox.Show(GroupName + "组的输入数据为空");
                     return 1;
                 }
-
             }
             catch (Exception ex)
             {
@@ -1049,16 +1077,16 @@ namespace WCF
             return 0;
         }
         /// <summary>
-        /// 查找相互类似的参数（更新一组数据用）
+        /// 查找相互类似的参数（更新一组数据用,一组位置，如：贴合X、贴合Y、贴合Z，查询贴合可以把这组3个数据查询出来）
         /// </summary>
         /// <returns></returns>
-        public int SelectShowParameter(string Name,ref DataGridView dgvShow)
+        public int SelectShowParameter(string Name, ref DataGridView dgvShow)
         {
             try
             {
                 string sql = "select " + mParameter + ".Name as 名称," +
                     mParameter + ".Value as 值, WcfAxis.Name as 关联轴 from " +
-                    mParameter + " left join WcfAxis on WcfAxis.ID = " + mParameter + ".CorrAxis "+
+                    mParameter + " left join WcfAxis on WcfAxis.ID = " + mParameter + ".CorrAxis " +
                     "where " + mParameter + ".Name like '" + Name + "%' ORDER BY " + mParameter + ".GroupName";
                 SQLiteDataAdapter mAdapter = new SQLiteDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
@@ -1087,6 +1115,23 @@ namespace WCF
                 DataTable dt = new DataTable();
                 mAdapter.Fill(dt);
                 dgvShow.DataSource = dt;
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dicPara.ContainsKey(dr[1].ToString()))
+                    {
+                        if (dr[3].ToString().Length <= 0)
+                            dicPara[dr[1].ToString()] = dr[2].ToString();
+                        else
+                            dicPara[dr[1].ToString()] = dr[2].ToString() + ";" + dicAxis[dr[3].ToString()];
+                    }
+                    else
+                    {
+                        if (dr[3].ToString().Length <= 0)
+                            dicPara.TryAdd(dr[1].ToString(), dr[2].ToString());
+                        else
+                            dicPara.TryAdd(dr[1].ToString(), dr[2].ToString() + ";" + dicAxis[dr[3].ToString()]);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -1100,13 +1145,13 @@ namespace WCF
         /// </summary>
         /// <param name="GroupName">参数组名</param>
         /// <returns></returns>
-        public int SelectShowParameter(ref DataGridView dgvShow,string GroupName)
+        public int SelectShowParameter(ref DataGridView dgvShow, string GroupName)
         {
             try
             {
                 SQLiteDataAdapter mAdapter = new SQLiteDataAdapter(
-                    "select GroupName as 组名,Name as 名称,Value as 值 from " + mParameter + 
-                    " WHERE GroupName="+ GroupName + " ORDER BY GroupName", conn);
+                    "select GroupName as 组名,Name as 名称,Value as 值 from " + mParameter +
+                    " WHERE GroupName=" + GroupName + " ORDER BY GroupName", conn);
                 DataTable dt = new DataTable();
                 mAdapter.Fill(dt);
                 dgvShow.DataSource = dt;
@@ -1127,7 +1172,7 @@ namespace WCF
         {
             try
             {
-                string sql = "select * from " + mParameter + " WHERE Name='" + Name+"'";
+                string sql = "select * from " + mParameter + " WHERE Name='" + Name + "'";
                 SQLiteDataAdapter mAdapter = new SQLiteDataAdapter(sql, conn);
                 DataTable dt = new DataTable();
                 mAdapter.Fill(dt);
@@ -1160,7 +1205,7 @@ namespace WCF
             {
                 string sql = "";
                 SQLiteCommand cmd;
-                if(isUpdateName)
+                if (isUpdateName)
                 {
                     if (CorrAxis.Length == 0)
                         CorrAxis = "-1";
@@ -1190,7 +1235,7 @@ namespace WCF
                         return 1;
                     }
                 }
-                sql = "UPDATE "+ mParameter + " SET Value=@Value WHERE Name=@oldName";
+                sql = "UPDATE " + mParameter + " SET Value=@Value WHERE Name=@oldName";
                 cmd = new SQLiteCommand(sql, conn);
                 cmd.Parameters.Add("Value", DbType.Double).Value = Value;
                 cmd.Parameters.Add("oldName", DbType.String).Value = oldName;
@@ -1269,7 +1314,7 @@ namespace WCF
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
                         mParameter = "WcfParameter" + dt.Rows[i]["Id"].ToString();
-                        sql = "DELETE FROM "+ mParameter + " WHERE Name='"+ Name + "'";
+                        sql = "DELETE FROM " + mParameter + " WHERE Name='" + Name + "'";
                         cmd = new SQLiteCommand(sql, conn);
                         cmd.ExecuteNonQuery();
                         cmd.Clone();
@@ -1284,6 +1329,149 @@ namespace WCF
             {
                 MessageBox.Show(ex.ToString());
                 return -1;
+            }
+            return 0;
+        }
+        /// <summary>
+        /// 矩阵表添加数据
+        /// </summary>
+        /// <returns></returns>
+        public int InsertMatrix(String Name, ConcurrentDictionary<string, string> dicMatrix)
+        {
+            try
+            {
+                SQLiteCommand cmd;
+                //查询表是否存在
+                string sql = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='" + mParameter + Name + "'";
+                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                mAdapter.Fill(dt);
+                if (dt.Rows.Count <= 0)
+                {
+                    //没有表就创建
+                    sql = "create table " + mParameter + Name + " as select * from WcfParameter";
+                    cmd = new SQLiteCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                    cmd.Clone();
+                }
+                else
+                {
+                    //有表就清空数据
+                    //1：清空数据
+                    sql = "DELETE FROEM '" + mParameter + Name + "'";
+                    cmd = new SQLiteCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                    cmd.Clone();
+                    //2：自增列改为0
+                    sql = "UPDATE sqlite_sequence SET seq=0 WHRER name = '" + mParameter + Name + "'";
+                    cmd = new SQLiteCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                    cmd.Clone();
+                }
+                //插入数据
+                foreach (String item in dicMatrix.Values)
+                {
+                    string[] mValue = item.Split(';');
+                    sql = "INSERT INTO " + mParameter + Name + "(GroupName,Name,CardNum,IoID,IoType,IoState,ExtendNum) " +
+                    "VALUES(@GroupName,@Name,@CardNum,@IoID,@IoType,@IoState,@ExtendNum)";
+                    cmd = new SQLiteCommand(sql, conn);
+                    cmd.Parameters.Add("NUM", DbType.Int32).Value = double.Parse(mValue[0]);
+                    cmd.Parameters.Add("State", DbType.Int32).Value = double.Parse(mValue[1]);
+                    cmd.Parameters.Add("X", DbType.Int32).Value = double.Parse(mValue[2]);
+                    cmd.Parameters.Add("Y", DbType.Int32).Value = double.Parse(mValue[3]);
+                    cmd.ExecuteNonQuery();
+                    cmd.Clone();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return -1;
+            }
+            return 0;
+        }
+        /// <summary>
+        /// 矩阵表查询数据
+        /// </summary>
+        /// <returns></returns>
+        public int SelectMatrix(string Name, ref ConcurrentDictionary<string, string> dicMatrix)
+        {
+            try
+            {
+                SQLiteCommand cmd;
+                //查询表是否存在
+                string sql = "SELECT count(*) FROM sqlite_master WHERE type='table' AND name='" + mParameter + Name + "'";
+                SQLiteDataAdapter mAdapter = new SQLiteDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                mAdapter.Fill(dt);
+                if (dt.Rows.Count <= 0)
+                {
+                    //没有表就创建
+                    sql = "create table " + mParameter + Name + " as select * from WcfParameter";
+                    cmd = new SQLiteCommand(sql, conn);
+                    cmd.ExecuteNonQuery();
+                    cmd.Clone();
+                }
+                mAdapter = new SQLiteDataAdapter("select NUM,State,X,Y,OffsetX,OffsetY,OffsetR  from " + mParameter + Name + "  ORDER BY NUM", conn);
+                dt = new DataTable();
+                mAdapter.Fill(dt);
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dicMatrix.ContainsKey(dr[0].ToString()))
+                        dicMatrix[dr[0].ToString()] = dr[1].ToString() + ";" + dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString();
+                    else
+                        dicMatrix.TryAdd(dr[0].ToString(), dr[1].ToString() + ";" + dr[2].ToString() + ";" + dr[3].ToString() + ";" + dr[4].ToString() + ";" + dr[5].ToString() + ";" + dr[6].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return -1;
+            }
+            return 0;
+        }
+        /// <summary>
+        /// 生成常量类
+        /// </summary>
+        /// <returns></returns>
+        public int GeneratingClass()
+        {
+            TextWriter tw = new StreamWriter(new BufferedStream(new FileStream(
+                Application.StartupPath + "\\WConstClass.cs", FileMode.Create, FileAccess.Write)),
+                System.Text.Encoding.GetEncoding("gb2312"));
+            try
+            {
+                tw.WriteLine("namespace WCF");
+                tw.WriteLine("{");
+                tw.WriteLine("\tclass WConstClass");
+                tw.WriteLine("\t{");
+                foreach (String mKey in dicPara.Keys)
+                {
+                    tw.WriteLine("\t\tpublic const string " + mKey + " = \"" + mKey + "\";");
+                }
+                foreach (String mKey in dicAxis.Keys)
+                {
+                    tw.WriteLine("\t\tpublic const string " + mKey + " = \"" + mKey + "\";");
+                }
+                foreach (String mKey in dicDI.Keys)
+                {
+                    tw.WriteLine("\t\tpublic const string " + mKey + " = \"" + mKey + "\";");
+                }
+                foreach (String mKey in dicDO.Keys)
+                {
+                    tw.WriteLine("\t\tpublic const string " + mKey + " = \"" + mKey + "\";");
+                }
+                tw.WriteLine("\t}");
+                tw.WriteLine("}");
+                tw.Flush();
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                tw.Close();
             }
             return 0;
         }

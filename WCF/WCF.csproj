@@ -81,11 +81,11 @@
       <DependentUpon>WCFDataType.cs</DependentUpon>
     </Compile>
     <Compile Include="WCFTool\WAutoUIClass.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="WCFMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="WCFMain.Designer.cs">
+      <DependentUpon>WCFMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,11 +116,12 @@
     <Compile Include="WCFTool\WCardClass.cs" />
     <Compile Include="WCFTool\WCardGTSClass.cs" />
     <Compile Include="WCFTool\WCardToolClass.cs" />
+    <Compile Include="WCFTool\WConstClass.cs" />
     <Compile Include="WCFTool\WDataToolClass.cs" />
     <Compile Include="WCFTool\WUseToolClass.cs" />
     <Compile Include="WorkThreads.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="WCFMain.resx">
+      <DependentUpon>WCFMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

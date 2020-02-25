@@ -6,7 +6,7 @@ namespace WCF
 	/// 类 描 述：运动控制卡数据工具类
 	/// 创 建 者：韦季李
 	/// 创建时间：2019/7/26
-	/// 源码网证：https://github.com/jiliwei/WCF
+	/// 源    码：https://github.com/jiliwei/WCF
     class WCardToolClass
     {
         public static WDataToolClass mWDataToolClass;
@@ -18,7 +18,7 @@ namespace WCF
         public static int InitOpenCard()
         {
             double mCardType = 0;//卡的类型，
-            mWDataToolClass.getDataParameter("运动控制卡类型",out mCardType);
+            mWDataToolClass.getDataParameter("运动控制卡类型", out mCardType);
 
             if (mCardType == 0)
                 mWCardClass = new WCardGTSClass();
@@ -32,7 +32,7 @@ namespace WCF
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public static bool  getDIState(string Name)
+        public static bool getDIState(string Name)
         {
             //读取参数
             int CardNum = 0;
@@ -41,14 +41,14 @@ namespace WCF
             int IoState = 0;
             int ExtendNum = 0;
             mWDataToolClass.getDataDI(Name, out CardNum, out IoID, out IoType, out IoState, out ExtendNum);
-            int mState = mWCardClass.getDIState(CardNum,  IoID,  IoType,  IoState,  ExtendNum);
+            int mState = mWCardClass.getDIState(CardNum, IoID, IoType, IoState, ExtendNum);
             if (mState == 0)
                 return false;
             else if (mState == 1)
                 return true;
             else if (mState == -1)
             {
-                if (MessageBox.Show("“"+Name+"”读取失败，“是”设置为有信号，“否”设置为无信号", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("“" + Name + "”读取失败，“是”设置为有信号，“否”设置为无信号", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     return true;
                 else
                     return false;
@@ -148,7 +148,7 @@ namespace WCF
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public static int setMoveAbsolutely(string Name,double Value)
+        public static int setMoveAbsolutely(string Name, double Value)
         {
 
             return 0;
@@ -207,8 +207,8 @@ namespace WCF
             int Acc = 0;
             int Speed = 0;
             int ResetNum = 0;
-            mWDataToolClass.getDataAxis( Name, out CardNum, out AxisNum, out Pulse, out Acc, out Speed, out ResetNum);
-            mWCardClass.getAxisCurrentLocation( CardNum,  AxisNum,  Pulse, out mCurrentLocation);
+            mWDataToolClass.getDataAxis(Name, out CardNum, out AxisNum, out Pulse, out Acc, out Speed, out ResetNum);
+            mWCardClass.getAxisCurrentLocation(CardNum, AxisNum, Pulse, out mCurrentLocation);
             return 0;
         }
     }

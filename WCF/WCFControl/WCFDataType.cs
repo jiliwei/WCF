@@ -7,7 +7,7 @@ namespace WCF
 	/// 类 描 述：机种编辑自定义控件
 	/// 创 建 者：韦季李
 	/// 创建时间：2019/7/26
-	/// 源码网证：https://github.com/jiliwei/WCF
+	/// 源    码：https://github.com/jiliwei/WCF
     public partial class WCFDataType : UserControl
     {
         public WCFDataType()

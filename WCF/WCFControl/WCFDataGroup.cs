@@ -9,7 +9,7 @@ namespace WCF.WCFControl
 	/// 类 描 述：分组显示参数自定义控件
 	/// 创 建 者：韦季李
 	/// 创建时间：2019/7/26
-	/// 源码网证：https://github.com/jiliwei/WCF
+	/// 源    码：https://github.com/jiliwei/WCF
     public partial class WCFDataGroup : UserControl
     {
         public WCFDataGroup()
