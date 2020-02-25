@@ -10,10 +10,13 @@ IO信号和轴的监控及操作自动生成，可以全部显示，也可以只
 流程编写便捷，输入信号获取，输出信号设置，轴运动等都可以一行代码完成。
 
 2020/2/25 0.0.0.2 更新内容
+
 	使用字典，实际使用时若是实时查数据库，会比较慢，用字典更高效；
+	
 	增加常量类，进一步简化流程的编写；如图：
 之前
 ![Image text](https://raw.githubusercontent.com/jiliwei/WCF/master/Other/ProcessCode.png)
+
 现在
 ![Image text](https://raw.githubusercontent.com/jiliwei/WCF/master/Other/ProcessCode002.png)
 
