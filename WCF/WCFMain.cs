@@ -52,11 +52,20 @@ namespace WCF
             wcfDataGroup.ConInit(mWDataToolClass);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public static WCFAbout mWCFAbout = null;
+        private void btnWCFAbout_Click(object sender, EventArgs e)
         {
-            WCFAbout mainForm = new WCFAbout();
-            mainForm.StartPosition = FormStartPosition.CenterScreen;
-            mainForm.Show();
+            if (mWCFAbout == null)
+            {
+                mWCFAbout = new WCFAbout();
+                mWCFAbout.StartPosition = FormStartPosition.CenterScreen;
+                mWCFAbout.Show();
+            }
+            else
+            {
+                mWCFAbout.Activate();
+                mWCFAbout.WindowState = FormWindowState.Normal;
+            }
         }
 
         private void WCFMain_FormClosed(object sender, FormClosedEventArgs e)

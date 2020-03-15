@@ -7,7 +7,7 @@ namespace WCF.WCFControl
 {
     /// 类 	  名：WCFAxis
 	/// 类 描 述：轴操作自定义控件
-	/// 创 建 者：韦季李
+	/// 创 建 者：WCF公会·韦季李
 	/// 创建时间：2019/7/26
 	/// 源    码：https://github.com/jiliwei/WCF
     public partial class WCFAxis : UserControl

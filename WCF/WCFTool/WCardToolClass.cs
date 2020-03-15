@@ -4,7 +4,7 @@ namespace WCF
 {
     /// 类 	  名：WCardToolClass
 	/// 类 描 述：运动控制卡数据工具类
-	/// 创 建 者：韦季李
+	/// 创 建 者：WCF公会·韦季李
 	/// 创建时间：2019/7/26
 	/// 源    码：https://github.com/jiliwei/WCF
     class WCardToolClass
