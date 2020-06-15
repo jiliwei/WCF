@@ -12,7 +12,7 @@ namespace WCF
 {
     /// 类 	  名：WCFAbout
 	/// 类 描 述：关于
-	/// 创 建 者：WCF公会·韦季李
+	/// WCF公会·769838889@qq.com
 	/// 创建时间：2019/7/26
 	/// 源    码：https://github.com/jiliwei/WCF
     public partial class WCFAbout : Form

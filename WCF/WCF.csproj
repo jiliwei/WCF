@@ -80,6 +80,12 @@
     <Compile Include="WCFControl\WCFDataType.Designer.cs">
       <DependentUpon>WCFDataType.cs</DependentUpon>
     </Compile>
+    <Compile Include="WCFControl\WCFMatrix.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WCFControl\WCFMatrix.designer.cs">
+      <DependentUpon>WCFMatrix.cs</DependentUpon>
+    </Compile>
     <Compile Include="WCFTool\WAutoUIClass.cs" />
     <Compile Include="WCFMain.cs">
       <SubType>Form</SubType>
@@ -120,6 +126,9 @@
     <Compile Include="WCFTool\WDataToolClass.cs" />
     <Compile Include="WCFTool\WUseToolClass.cs" />
     <Compile Include="WorkThreads.cs" />
+    <EmbeddedResource Include="WCFControl\WCFMatrix.resx">
+      <DependentUpon>WCFMatrix.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WCFMain.resx">
       <DependentUpon>WCFMain.cs</DependentUpon>
     </EmbeddedResource>

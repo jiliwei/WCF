@@ -35,18 +35,20 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.splitContainer5 = new System.Windows.Forms.SplitContainer();
-            this.wcfDataType = new WCF.WCFDataType();
-            this.wcfDataGroup = new WCF.WCFControl.WCFDataGroup();
-            this.wcfDataPata = new WCF.WCFData();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.wcfDataType = new WCF.WCFDataType();
+            this.wcfDataGroup = new WCF.WCFControl.WCFDataGroup();
+            this.wcfDataPata = new WCF.WCFData();
             this.lvWcfDI = new WCF.Resources.WCFDI();
             this.lvWcfDO = new WCF.WCFControl.WCFDO();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.lvWcfAxis = new WCF.WCFControl.WCFAxis();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.wcfCardEdit = new WCF.WCFCard();
+            this.wcfMatrix1 = new WCF.WCFControl.WCFMatrix();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -72,6 +74,7 @@
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,6 +83,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -164,31 +168,6 @@
             this.splitContainer5.SplitterDistance = 36;
             this.splitContainer5.TabIndex = 0;
             // 
-            // wcfDataType
-            // 
-            this.wcfDataType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wcfDataType.Location = new System.Drawing.Point(0, 0);
-            this.wcfDataType.Name = "wcfDataType";
-            this.wcfDataType.Size = new System.Drawing.Size(675, 36);
-            this.wcfDataType.TabIndex = 5;
-            this.wcfDataType.DataUpdateClick += new System.EventHandler(this.wcfDataType_DataUpdateClick);
-            // 
-            // wcfDataGroup
-            // 
-            this.wcfDataGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wcfDataGroup.Location = new System.Drawing.Point(0, 0);
-            this.wcfDataGroup.Name = "wcfDataGroup";
-            this.wcfDataGroup.Size = new System.Drawing.Size(675, 789);
-            this.wcfDataGroup.TabIndex = 4;
-            // 
-            // wcfDataPata
-            // 
-            this.wcfDataPata.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wcfDataPata.Location = new System.Drawing.Point(0, 0);
-            this.wcfDataPata.Name = "wcfDataPata";
-            this.wcfDataPata.Size = new System.Drawing.Size(891, 829);
-            this.wcfDataPata.TabIndex = 0;
-            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.splitContainer1);
@@ -234,6 +213,65 @@
             this.splitContainer2.SplitterDistance = 816;
             this.splitContainer2.TabIndex = 0;
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.lvWcfAxis);
+            this.splitContainer3.Size = new System.Drawing.Size(1576, 495);
+            this.splitContainer3.SplitterDistance = 819;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.wcfCardEdit);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1576, 835);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "  硬件参数  ";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.wcfMatrix1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1576, 835);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "矩阵";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // wcfDataType
+            // 
+            this.wcfDataType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wcfDataType.Location = new System.Drawing.Point(0, 0);
+            this.wcfDataType.Name = "wcfDataType";
+            this.wcfDataType.Size = new System.Drawing.Size(675, 36);
+            this.wcfDataType.TabIndex = 5;
+            this.wcfDataType.DataUpdateClick += new System.EventHandler(this.wcfDataType_DataUpdateClick);
+            // 
+            // wcfDataGroup
+            // 
+            this.wcfDataGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wcfDataGroup.Location = new System.Drawing.Point(0, 0);
+            this.wcfDataGroup.Name = "wcfDataGroup";
+            this.wcfDataGroup.Size = new System.Drawing.Size(675, 789);
+            this.wcfDataGroup.TabIndex = 4;
+            // 
+            // wcfDataPata
+            // 
+            this.wcfDataPata.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wcfDataPata.Location = new System.Drawing.Point(0, 0);
+            this.wcfDataPata.Name = "wcfDataPata";
+            this.wcfDataPata.Size = new System.Drawing.Size(891, 829);
+            this.wcfDataPata.TabIndex = 0;
+            // 
             // lvWcfDI
             // 
             this.lvWcfDI.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -250,19 +288,6 @@
             this.lvWcfDO.Size = new System.Drawing.Size(756, 336);
             this.lvWcfDO.TabIndex = 5;
             // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.lvWcfAxis);
-            this.splitContainer3.Size = new System.Drawing.Size(1576, 495);
-            this.splitContainer3.SplitterDistance = 819;
-            this.splitContainer3.TabIndex = 0;
-            // 
             // lvWcfAxis
             // 
             this.lvWcfAxis.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -271,17 +296,6 @@
             this.lvWcfAxis.Size = new System.Drawing.Size(819, 495);
             this.lvWcfAxis.TabIndex = 7;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.wcfCardEdit);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1576, 835);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "  硬件参数  ";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // wcfCardEdit
             // 
             this.wcfCardEdit.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -289,6 +303,13 @@
             this.wcfCardEdit.Name = "wcfCardEdit";
             this.wcfCardEdit.Size = new System.Drawing.Size(1570, 829);
             this.wcfCardEdit.TabIndex = 0;
+            // 
+            // wcfMatrix1
+            // 
+            this.wcfMatrix1.Location = new System.Drawing.Point(8, 3);
+            this.wcfMatrix1.Name = "wcfMatrix1";
+            this.wcfMatrix1.Size = new System.Drawing.Size(561, 497);
+            this.wcfMatrix1.TabIndex = 0;
             // 
             // WCFMain
             // 
@@ -326,6 +347,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -351,6 +373,8 @@
         private WCFControl.WCFAxis lvWcfAxis;
         private System.Windows.Forms.SplitContainer splitContainer4;
         private System.Windows.Forms.SplitContainer splitContainer5;
+        private System.Windows.Forms.TabPage tabPage5;
+        private WCFControl.WCFMatrix wcfMatrix1;
     }
 }
 

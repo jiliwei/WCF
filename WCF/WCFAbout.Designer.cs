@@ -67,19 +67,19 @@
             this.label4.Font = new System.Drawing.Font("仿宋", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(16, 366);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(304, 16);
+            this.label4.Size = new System.Drawing.Size(136, 16);
             this.label4.TabIndex = 14;
-            this.label4.Text = "对接人联系方式(微信QQ同号)：769838889";
+            this.label4.Text = "769838889@qq.com";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("仿宋", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(99, 71);
+            this.label3.Location = new System.Drawing.Point(41, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(303, 20);
+            this.label3.Size = new System.Drawing.Size(408, 20);
             this.label3.TabIndex = 13;
-            this.label3.Text = "接下来的目标：让软工不写流程";
+            this.label3.Text = "目标：流程可以让调试工程师快速上手编写";
             // 
             // llb_WCF
             // 
@@ -108,7 +108,7 @@
             this.lbl_Version.Name = "lbl_Version";
             this.lbl_Version.Size = new System.Drawing.Size(149, 12);
             this.lbl_Version.TabIndex = 10;
-            this.lbl_Version.Text = "版本： 0.0.0.3（鉴赏版）";
+            this.lbl_Version.Text = "版本： 0.0.0.4（鉴赏版）";
             // 
             // label1
             // 
@@ -124,7 +124,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Yellow;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.ClientSize = new System.Drawing.Size(502, 393);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);

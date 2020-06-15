@@ -4,7 +4,7 @@ namespace WCF
 {
     /// 类 	  名：WCardToolClass
 	/// 类 描 述：运动控制卡数据工具类
-	/// 创 建 者：WCF公会·韦季李
+	/// WCF公会·769838889@qq.com
 	/// 创建时间：2019/7/26
 	/// 源    码：https://github.com/jiliwei/WCF
     class WCardToolClass
@@ -30,8 +30,12 @@ namespace WCF
         /// <summary>
         /// DI读取
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="Name">信号的名称</param>
         /// <returns></returns>
+        public static bool 读取输入信号(string Name)
+        {
+            return getDIState(Name);
+        }
         public static bool getDIState(string Name)
         {
             //读取参数
@@ -58,9 +62,13 @@ namespace WCF
         /// <summary>
         /// 等待DI信号
         /// </summary>
-        /// <param name="Name"></param>
-        /// <param name="mState">等待的信号</param>
+        /// <param name="Name">信号的名称</param>
+        /// <param name="mState">等待的信号状态</param>
         /// <returns></returns>
+        public static bool 等待输入信号(string Name, bool mState)
+        {
+            return waitDIState( Name, mState);
+        }
         public static bool waitDIState(string Name, bool mState)
         {
             return true;
@@ -136,8 +144,12 @@ namespace WCF
         /// <summary>
         /// 相对运动
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="Name">参数名称</param>
         /// <returns></returns>
+        public static int 相对运动(string Name)
+        {
+            return setMoveRelative(Name);
+        }
         public static int setMoveRelative(string Name)
         {
 
@@ -166,8 +178,12 @@ namespace WCF
         /// <summary>
         /// JOG运动启动
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="Name">轴名称</param>
         /// <returns></returns>
+        public static int JOG运动启动(string Name)
+        {
+            return setMoveJOGStart(Name);
+        }
         public static int setMoveJOGStart(string Name)
         {
 
@@ -178,6 +194,10 @@ namespace WCF
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
+        public static int JOG运动停止(string Name)
+        {
+            return setMoveJOGStop(Name);
+        }
         public static int setMoveJOGStop(string Name)
         {
 
@@ -209,6 +229,16 @@ namespace WCF
             int ResetNum = 0;
             mWDataToolClass.getDataAxis(Name, out CardNum, out AxisNum, out Pulse, out Acc, out Speed, out ResetNum);
             mWCardClass.getAxisCurrentLocation(CardNum, AxisNum, Pulse, out mCurrentLocation);
+            return 0;
+        }
+        /// <summary>
+        /// 等待X毫秒
+        /// </summary>
+        /// <param name="X"></param>
+        /// <returns></returns>
+        public static int 等待X毫秒(int X)
+        {
+            System.Threading.Thread.Sleep(X);
             return 0;
         }
     }
