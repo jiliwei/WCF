@@ -6,7 +6,7 @@ namespace WCF
 {
     /// 类 	  名：WUseToolClass
 	/// 类 描 述：常用工具类
-	/// WCF公会·769838889@qq.com
+	/// WCF·769838889@qq.com
 	/// 创建时间：2019/7/26
 	/// 源    码：https://github.com/jiliwei/WCF
     public class WUseToolClass

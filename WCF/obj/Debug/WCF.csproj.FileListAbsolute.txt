@@ -36,15 +36,9 @@ D:\WCFGit\WCF\WCF\obj\Debug\WCF.exe
 D:\WCFGit\WCF\WCF\obj\Debug\WCF.pdb
 D:\WCFGit\WCF\WCF\obj\Debug\WCF.csprojAssemblyReference.cache
 D:\WCFGit\WCF\WCF\obj\Debug\WCF.WCFMain.resources
-D:\ZJ\WCF\WCF\WCF\bin\Debug\WCF.exe.config
-D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.exe
-D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.pdb
-D:\ZJ\WCF\WCF\WCF\bin\Debug\WCF.exe
-D:\ZJ\WCF\WCF\WCF\bin\Debug\WCF.pdb
-D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.csprojResolveAssemblyReference.cache
+D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFControl.WCFAutoScript.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFControl.WCFMatrix.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFMain.resources
-D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.Properties.Resources.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFAbout.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFControl.WCFAxis.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFControl.WCFDataGroup.resources
@@ -54,3 +48,9 @@ D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFCard.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFData.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.WCFControl.WCFDO.resources
 D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.csproj.GenerateResource.Cache
+D:\ZJ\WCF\WCF\WCF\bin\Debug\WCF.exe.config
+D:\ZJ\WCF\WCF\WCF\bin\Debug\WCF.exe
+D:\ZJ\WCF\WCF\WCF\bin\Debug\WCF.pdb
+D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.Properties.Resources.resources
+D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.exe
+D:\ZJ\WCF\WCF\WCF\obj\Debug\WCF.pdb

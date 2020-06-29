@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WCFMain));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnWCFAbout = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
@@ -41,6 +41,11 @@
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.wcfDataType = new WCF.WCFDataType();
             this.wcfDataGroup = new WCF.WCFControl.WCFDataGroup();
             this.wcfDataPata = new WCF.WCFData();
@@ -49,9 +54,9 @@
             this.lvWcfAxis = new WCF.WCFControl.WCFAxis();
             this.wcfCardEdit = new WCF.WCFCard();
             this.wcfMatrix1 = new WCF.WCFControl.WCFMatrix();
+            this.wcfAutoScript = new WCF.WCFControl.WCFAutoScript();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
             this.splitContainer4.Panel1.SuspendLayout();
@@ -75,6 +80,7 @@
             this.splitContainer3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -84,6 +90,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -93,7 +100,9 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.pictureBox1);
+            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.label1);
             this.tabPage4.Controls.Add(this.btnWCFAbout);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -102,19 +111,9 @@
             this.tabPage4.Text = "  主页  ";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WCF.Properties.Resources.Synopsis;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(836, 824);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // btnWCFAbout
             // 
-            this.btnWCFAbout.Location = new System.Drawing.Point(858, 3);
+            this.btnWCFAbout.Location = new System.Drawing.Point(3, 164);
             this.btnWCFAbout.Name = "btnWCFAbout";
             this.btnWCFAbout.Size = new System.Drawing.Size(75, 23);
             this.btnWCFAbout.TabIndex = 8;
@@ -239,6 +238,7 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.label3);
             this.tabPage5.Controls.Add(this.wcfMatrix1);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -246,6 +246,51 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "矩阵";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.wcfAutoScript);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1576, 835);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "流程";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Image = global::WCF.Properties.Resources.matrix1;
+            this.label2.Location = new System.Drawing.Point(8, 277);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(584, 553);
+            this.label2.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.Image = global::WCF.Properties.Resources.process;
+            this.label1.Location = new System.Drawing.Point(598, 186);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(688, 644);
+            this.label1.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.Image = global::WCF.Properties.Resources.matrix2;
+            this.label3.Location = new System.Drawing.Point(962, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(606, 560);
+            this.label3.TabIndex = 13;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("仿宋", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBox1.Location = new System.Drawing.Point(3, 3);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(1037, 155);
+            this.textBox1.TabIndex = 12;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // wcfDataType
             // 
@@ -311,6 +356,13 @@
             this.wcfMatrix1.Size = new System.Drawing.Size(561, 497);
             this.wcfMatrix1.TabIndex = 0;
             // 
+            // wcfAutoScript
+            // 
+            this.wcfAutoScript.Location = new System.Drawing.Point(8, 3);
+            this.wcfAutoScript.Name = "wcfAutoScript";
+            this.wcfAutoScript.Size = new System.Drawing.Size(676, 585);
+            this.wcfAutoScript.TabIndex = 0;
+            // 
             // WCFMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -318,13 +370,13 @@
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.tabControl1);
             this.Name = "WCFMain";
-            this.Text = "WCF";
+            this.Text = "WCF-769838889@qq.com";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.WCFMain_FormClosed);
             this.Load += new System.EventHandler(this.WCFMain_Load);
             this.SizeChanged += new System.EventHandler(this.WCFMain_SizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage4.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.splitContainer4.Panel1.ResumeLayout(false);
             this.splitContainer4.Panel2.ResumeLayout(false);
@@ -348,6 +400,7 @@
             this.splitContainer3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -365,7 +418,6 @@
         private Resources.WCFDI lvWcfDI;
         private WCFDataType wcfDataType;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnWCFAbout;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -375,6 +427,12 @@
         private System.Windows.Forms.SplitContainer splitContainer5;
         private System.Windows.Forms.TabPage tabPage5;
         private WCFControl.WCFMatrix wcfMatrix1;
+        private System.Windows.Forms.TabPage tabPage6;
+        private WCFControl.WCFAutoScript wcfAutoScript;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

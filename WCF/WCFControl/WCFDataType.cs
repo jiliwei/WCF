@@ -5,7 +5,7 @@ namespace WCF
 {
     /// 类 	  名：WCFDataType
 	/// 类 描 述：机种编辑自定义控件
-	/// WCF公会·769838889@qq.com
+	/// WCF·769838889@qq.com
 	/// 创建时间：2019/7/26
 	/// 源    码：https://github.com/jiliwei/WCF
     public partial class WCFDataType : UserControl

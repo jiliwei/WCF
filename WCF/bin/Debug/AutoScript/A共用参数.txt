@@ -1,0 +1,5 @@
+static string 上料状态 = "未完成";
+static string 飞达状态 = "未完成";
+static string 取料状态 = "未完成";
+static string 贴合状态 = "未完成";
+static string 下料状态 = "完成";

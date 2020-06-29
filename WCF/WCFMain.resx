@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>简介
+WCF现阶段目标：流程可以让调试工程师快速上手编写。
+硬件参数数据在硬件参数编辑控件一键添加，不用添加代码，就可以直接添加、更改并使用（设备参数也一样）；
+IO信号和轴的监控及操作自动生成，可以全部显示，也可以只显示某一个组数据；
+矩阵几乎兼容所有崔盘，多摄像头的矩阵请切换到矩阵标签，矩阵标签项还有一个矩阵gif；
+流程的脚本模块使用了cs-script C#动态编译引擎，所以语法同C#语言；
+脚本使用中文的目的是为了让调试工程师快速上手。若对中文不习惯，把函数名称改为英文即可。</value>
+  </data>
 </root>

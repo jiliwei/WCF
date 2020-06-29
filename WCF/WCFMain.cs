@@ -38,7 +38,8 @@ namespace WCF
             wcfDataGroup.ConInit(mWDataToolClass);
             //初始化机种选择
             wcfDataType.ConInit(mWDataToolClass, false);
-
+            //初始化流程控件
+            wcfAutoScript.ConInit();
         }
 
         private void WCFMain_SizeChanged(object sender, EventArgs e)
@@ -70,10 +71,15 @@ namespace WCF
 
         private void WCFMain_FormClosed(object sender, FormClosedEventArgs e)
         {
+            wcfAutoScript.Clear();//关闭已经开启的线程
             //创建常量类，开发期间使用。
             //打开软件增加好参数后，退出软件，就把常量类复制过来覆盖旧文件就进行开发程序；
             //避免了常量类增加参数名字后又去软件增加参数，从而提高效率
             mWDataToolClass.GeneratingClass();
+
+            System.Environment.Exit(0);
+            this.Dispose();
+            this.Close();
         }
     }
 }

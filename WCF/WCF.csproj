@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CSScriptLibrary, Version=3.30.3.0, Culture=neutral, PublicKeyToken=70fcc3d18c749033, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CSScriptLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
@@ -50,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="WCFAbout.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WCFAbout.Designer.cs">
       <DependentUpon>WCFAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WCFControl\WCFAutoScript.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WCFControl\WCFAutoScript.Designer.cs">
+      <DependentUpon>WCFAutoScript.cs</DependentUpon>
     </Compile>
     <Compile Include="WCFControl\WCFAxis.cs">
       <SubType>UserControl</SubType>
@@ -86,6 +101,7 @@
     <Compile Include="WCFControl\WCFMatrix.designer.cs">
       <DependentUpon>WCFMatrix.cs</DependentUpon>
     </Compile>
+    <Compile Include="WCFScript\工具.cs" />
     <Compile Include="WCFTool\WAutoUIClass.cs" />
     <Compile Include="WCFMain.cs">
       <SubType>Form</SubType>
@@ -126,6 +142,9 @@
     <Compile Include="WCFTool\WDataToolClass.cs" />
     <Compile Include="WCFTool\WUseToolClass.cs" />
     <Compile Include="WorkThreads.cs" />
+    <EmbeddedResource Include="WCFControl\WCFAutoScript.resx">
+      <DependentUpon>WCFAutoScript.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WCFControl\WCFMatrix.resx">
       <DependentUpon>WCFMatrix.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,14 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="WCFAbout.resx">
       <DependentUpon>WCFAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,13 +194,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Synopsis.PNG" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\OFF.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ON.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\gif\matrix1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\gif\matrix2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\gif\process.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

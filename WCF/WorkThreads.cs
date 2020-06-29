@@ -5,7 +5,7 @@ namespace WCF
 {
     /// 类 	  名：WorkThreads
 	/// 类 描 述：工作流程类
-	/// WCF公会·769838889@qq.com
+	/// WCF·769838889@qq.com
 	/// 创建时间：2019/7/26
 	/// 修改时间：2020/2/26
 	/// 源    码：https://github.com/jiliwei/WCF
